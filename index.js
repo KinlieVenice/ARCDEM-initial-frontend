@@ -544,41 +544,12 @@ const displayGroupDetails = async (ID) => {
   const detailsElement = document.querySelector(".details");
   if (detailsElement) {
     detailsElement.remove();
+    markers[`assID-${openedMarkId}`].closePopup();
   }
-  // if (currSubgrpIDPopup != ID || currSubgrpIDPopup != openedId) {
-  //   displayAssessState = false;
-  //   displaySubgrpState = false;
-  //   currSubgrpIDPopup = ID;
-  // }
-
-  // let groupNames = document.getElementById(`group-${ID}`);
-  // const key = `groupAss-${ID}`;
-  // if (openedId !== ID) {
-  //   let openedGroup = document.getElementById(`details-${openedId}`);
-  //   displayAssessState = false;
 
   const details = await fetchGroup(ID);
   console.log("details", details);
 
-
-  //   const assess = await fetchGroup(ID, "assessments");
-
-  //   removeMarker(assessGroup[key]);
-
-  //   assessGroup[key] = assess.assessments;
-  //   addMarker(assessGroup[key], "yellow");
-
-  //   let coords = [];
-  //   assessGroup[key].forEach((ass) => {
-  //     coords.push(ass.start_coor);
-  //   });
-
-  //   if (openedGroup) {
-  //     openedGroup.remove();
-  //     removeMarker(assessGroup[`groupAss-${openedId}`]);
-  //     addMarker(assessGroup[`groupAss-${openedId}`]);
-  //   }
-  //   openedId = ID;
 
   closeGroupDetails(openedId);
   main.insertAdjacentHTML(
@@ -699,35 +670,6 @@ const displayGroupDetails = async (ID) => {
   console.log("parent_id", details.parent_id);
   openedId = ID;
 
-  //   let expanded = document.getElementById(`toggle-${ID}`);
-  //   let sumDetails = document.getElementById(`details-${ID}`);
-
-  //   expanded.addEventListener("click", () => {
-  //     sumDetails.classList.toggle("open");
-  //   });
-
-  //   zoomToPoints(coords);
-  //   sumDetails.classList.add("open");
-  // } else {
-  //   let track = document.getElementById(`details-${ID}`);
-
-  //   if (!track.classList.contains("open")) {
-  //     let coords = [];
-  //     assessGroup[key].forEach((ass) => {
-  //       coords.push(ass.start_coor);
-  //     });
-  //     zoomToPoints(coords);
-  //     removeMarker(assessGroup[key]);
-  //     addMarker(assessGroup[key], "yellow");
-  //   } else {
-  //     const allCoords = Object.values(assessGroup).flatMap((group) =>
-  //       group.map((item) => item.start_coor)
-  //     );
-  //     zoomToPoints(allCoords);
-  //     removeMarker(assessGroup[key]);
-  //     addMarker(assessGroup[key]);
-  //   }
-  // }
 };
 
 const downloadSummary = async (ID) => {
