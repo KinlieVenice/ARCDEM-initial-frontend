@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="ARCDEM - Automated Road Crack Detection and Mapping System"
+    />
+    <meta
+      property="og:description"
+      content="Design project by: Aquino, de Guzman, Emprese, and Vallente"
+    />
+    <meta property="og:image" content="https://arcdem.site/img/thumbnail.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arcdem.site/" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="ARCDEM - Automated Road Crack Detection and Mapping System"
+    />
+    <meta
+      name="twitter:description"
+      content="Design project by: Aquino, de Guzman, Emprese, and Vallente"
+    />
+    <meta
+      name="twitter:image"
+      content="https://arcdem.site/img/thumbnail.png"
+    />
+
+    <title>ARCDEM</title>
+
+    <link href="./output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"
+    />
+  </head>
+
+  <body class="bg-light h-dvh">
+    <!-- HEADER -->
+    <header
+      class="header bg-light lg:py-6 md:py-5 sm:py-4 py-3 lg:px-10 md:px-7 px-5 absolute w-full top-0 left-0 z-50"
+    >
+      <div class="header__wrapper flex justify-between items-center">
+        <div
+          class="header__name flex justify-between items-center sm:gap-4 lg:gap-10"
+        >
+          <h1 class="logo text-primary">ARCDEM</h1>
+          <h3 class="hidden sm:block md:text-lg sm:text-sm">
+            Automated Road Crack Detection and Mapping System
+          </h3>
+        </div>
+        <nav class="flex justify-center items-center">
+          <a href=""
+            ><img
+              src="/img/add-icon.png"
+              alt="Admin"
+              class="w-7 md:w-10 lg:w-12"
+          /></a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAP -->
+    <section
+      class="map h-full w-full lg:pt-[95px] md:pt-[79px] sm:pt-[64px] pt-[56px]"
+    >
+      <div class="map__wrapper h-full w-full relative">
+        <div id="main" class="gis">
+          <div
+            class="top absolute z-[35] w-full top-0 left-0 flex px-6 sm:px-8 md:px-10 lg:px-14 bg-primary text-light justify-between items-center"
+          >
+            <span class="flex">
+              <span id=""
+                ><h2 class="sideGIS hidden md:block">GIS System</h2>
+                <h2 class="block md:hidden">GIS System</h2></span
+              >
+            </span>
+          </div>
+          <div id="map" class="w-full h-full z-10"></div>
+        </div>
+
+        <!-- ASIDES -->
+        <!-- <aside class="groupDetails details">
+          <div
+            id="details__toggle"
+            class="details__toggle"
+          >
+            &lsaquo;
+          </div>
+          <div>
+            <div
+              class="top flex z-50 w-full items-center top-0 left-0 allindent bg-dark text-light"
+            >
+              <h2 class="text-light">Location</h2>
+            </div>
+          </div>
+          <div
+            class="yellow-part bg-primary flex justify-between items-center border-y-[1px]"
+            id="toggle-2"
+          >
+            <span class="pin_loc flex gap-1 items-center cursor-pointer">
+              <img src="/img/pin-loc.png" alt="" />
+              <p>no province</p>
+            </span>
+            <a class="text-4xl" onclick="closeSubgrpDetails(2, 1)">×</a>
+          </div>
+
+          <div class="detailedInfo h-full overflow-y-auto" id="details-2">
+            <p class="font-bold detailed-info border-t-2">
+              Detailed Information
+            </p>
+            <div class="detailedInfos__wrapper">
+              <div class="detailed-info">
+                <span class="flex gap-[15px] items-center">
+                  <img src="/img/length.png" alt="" />
+                  <p class="font-bold">Length of Road Monitored:</p>
+                </span>
+                <p class="pl-[56px]">5 meters</p>
+              </div>
+              <div class="detailed-info">
+                <span class="flex gap-[15px] items-center">
+                  <img src="/img/lanes.png" alt="" />
+                  <p class="font-bold">Number of Assessments:</p>
+                </span>
+                <p class="pl-[56px]">1 assessments</p>
+              </div>
+              <div class="detailed-info">
+                <span class="flex gap-[15px] items-center">
+                  <img src="/img/cracks-detected.png" alt="" />
+                  <p class="font-bold">Types of Cracks Detected:</p>
+                </span>
+                <span class="grid gap-2">
+                  <p class="pl-[56px]">Transverse Cracks (1)</p>
+                  <p class="pl-[56px]">Longitudinal Cracks (1)</p>
+                  <p class="pl-[56px]">Multiple Cracks (0)</p>
+                </span>
+              </div>
+              <div class="detailed-info">
+                <span class="flex gap-[15px] items-center">
+                  <img src="/img/total-crack.png" alt="" />
+                  <p class="font-bold">Total Number of Cracks:</p>
+                </span>
+                <p class="pl-[56px]">2 cracks</p>
+              </div>
+              <div class="detailed-info">
+                <span class="flex gap-[15px] items-center">
+                  <img src="/img/date.png" alt="" />
+                  <p class="font-bold">Date Last Updated:</p>
+                </span>
+                <p class="pl-[56px]">2025-02-28 12:53:20</p>
+              </div>
+            </div>
+          </div>
+        </aside> -->
+
+        <!-- <aside class="assessDetails details">
+          <div
+            id="details__toggle"
+            class="details__toggle z-[-1] sm:hidden text-center flex items-center justify-center text-5xl leading-none rounded-full h-14 w-16 pb-2 pl-5 bg-light absolute top-[50%] translate-y-[-50%] right-0 translate-x-[65%] duration-300 ease-in-out"
+          >
+            &lsaquo;
+          </div>
+
+          <div>
+            <div
+              class="top flex z-50 w-full items-center top-0 left-0 allindent bg-dark text-light"
+            >
+              <h5 class="inline" id="coordinates">
+                <span>-14.5995264S,</span> <span>120.9842123W</span>
+              </h5>
+              <h5 class="inline">Road: 5m</h5>
+            </div>
+          </div>
+
+          <span
+            class="yellow-part bg-primary flex justify-between items-center"
+          >
+            <span class="flex gap-1 items-center py-4">
+              <img src="/img/pin-loc.png" alt="" />
+              <span id="address" class="">
+                <a onclick="goBack(3, 2)"><p class="inline">Davao,</p></a>
+
+                <a onclick="goBack(2, 1)"><p class="inline">no province,</p></a>
+
+                <a onclick="goBack(1, 0)"><p class="inline">Bicol</p></a>
+              </span>
+            </span>
+            <a class="text-4xl" onclick="closeAssessmentDetails()">×</a>
+          </span>
+
+          <div id="crackDetails" class="overflow-y-auto">
+            <div class="crack-info grid gap-2">
+              <h3 class="font-bold">Crack 1:</h3>
+              <p><span class="font-bold">Type: </span>longitudinal</p>
+              <p><span class="font-bold">Severity: </span>narrow</p>
+              <p>
+                <span class="font-bold">Recommended Solution: </span>Asphalt
+              </p>
+            </div>
+            <div class="crack-info grid gap-2">
+              <h3 class="font-bold">Crack 2:</h3>
+              <p><span class="font-bold">Type: </span>transverse</p>
+              <p><span class="font-bold">Severity: </span>wide</p>
+              <p>
+                <span class="font-bold">Recommended Solution: </span>Asphalt
+              </p>
+            </div>
+            <img src="crack.png" class="object-fit p-5" />
+          </div>
+        </aside> -->
+
+        <!-- <aside class="groupsPanel open">
+          <div class="groupsPanel__menu" id="groupsPanel__menu">
+            <span class=""></span>
+            <span class=""></span>
+            <span class=""></span>
+          </div>
+          <div
+            class="backdrop absolute w-full h-full top-0 left-0 z-40 sm:hidden"
+          ></div>
+          <div class="groupsPanel__back">&lsaquo;</div>
+          <div class="groupsPanel__wrapper h-full grid grid-rows-[auto_1fr]">
+            <div class="groupsLabel z-50 w-full">
+              <div
+                class="groupsPanel--subs grid grid-cols-2 justify-items-center"
+              >
+                <h6 id="subgroups" class="open">Subgroups</h6>
+                <h6 id="assessments">Assessments</h6>
+              </div>
+            </div>
+
+            <div class="groupsList py-3 relative h-full overflow-y-auto">
+              <div class="groupsList--content open" id="subgroups-content">
+                <h6 class="selected">Carmona</h6>
+                <h6>Indang</h6>
+                <h6>Naic</h6>
+              </div>
+              <div class="groupsList--content" id="assessments-content">
+                <h6 class="selected">Assessment 1</h6>
+                <h6>Assessment 2</h6>
+                <h6>Assessment 3</h6>
+              </div>
+            </div>
+          </div>
+        </aside> -->
+      </div>
+    </section>
+
+    <!-- HEADER -->
+    <!-- <header
+      class="header"
+    >
+      <div class="container">
+        <div class="header__wrapper">
+          <img class="w-[8rem]" src="../IMG/LOGO.png" alt="" />
+          <nav class="header__nav">
+            <li><a href="./home.html">HOME</a></li>
+            <li><a href="./about.html">ABOUT</a></li>
+            <li><a href="./menu.html">MENU</a></li>
+            <li><a href="./contacts.html">CONTACTS</a></li>
+          </nav>
+          <div class="toggle__menu">
+            <span class=""></span>
+            <span class=""></span>
+          </div>
+          <div class="backdrop"></div>
+        </div>
+      </div>
+    </header> -->
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="index.js"></script>
+  </body>
+</html>
