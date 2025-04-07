@@ -323,7 +323,7 @@ const displayMarkersDetails = async (ID, lat, lng) => {
 
           <span class="yellow-part bg-primary flex justify-between items-center">
             <span class="flex gap-1 items-center py-3 overflow-x-hidden">
-              <img src="/img/pin-loc.png" class="w-[15px] h-[15px] md:w-[20px] md:h-[20px] lg:w-[30px] lg:h-[30px]" alt="" />
+              <img src="img/pin-loc.png" class="w-[15px] h-[15px] md:w-[20px] md:h-[20px] lg:w-[30px] lg:h-[30px]" alt="" />
               <span id="address" ">
                
               </span>
@@ -603,7 +603,7 @@ const displayGroupDetails = async (ID) => {
         id="toggle-2"
       >
         <span class="pin_loc flex gap-1 items-center cursor-pointer">
-          <img src="/img/pin-loc.png" alt="" class="w-[15px] h-[15px] md:w-[20px] md:h-[20px] lg:w-[30px] lg:h-[30px]"/>
+          <img src="img/pin-loc.png" alt="" class="w-[15px] h-[15px] md:w-[20px] md:h-[20px] lg:w-[30px] lg:h-[30px]"/>
           <p>${details.name}</p>
         </span>
         <a class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl" onclick="closeGroupDetails(${ID}, ${true})">×</a>
@@ -611,26 +611,26 @@ const displayGroupDetails = async (ID) => {
       <div class="detailedInfo h-full overflow-y-auto" id="details-2">
         <span class="detailed-info border-t-2 flex justify-between">
             <p class="font-bold  ">Summary Information</p>
-            <button id="downloadSummaryBtn" onclick="downloadSummary(${ID})"><img src="/img/download.png" class="w-[15px] h-[15px] md:w-[20px] md:h-[20px] lg:w-[25px] lg:h-[25px]" alt="" /></button>
+            <button id="downloadSummaryBtn" onclick="downloadSummary(${ID})"><img src="img/download.png" class="w-[15px] h-[15px] md:w-[20px] md:h-[20px] lg:w-[25px] lg:h-[25px]" alt="" /></button>
         </span>
         <div class="detailedInfos__wrapper">
           <div class="detailed-info">
             <span class="flex gap-[15px] items-center">
-              <img src="/img/length.png" class="" alt="" />
+              <img src="img/length.png" class="" alt="" />
               <p class="font-bold">Length of Road Monitored:</p>
             </span>
             <p class="detailed_assess">${details.n_assess * 5} meters</p>
           </div>
           <div class="detailed-info">
             <span class="flex gap-[15px] items-center">
-              <img src="/img/lanes.png" alt="" />
+              <img src="img/lanes.png" alt="" />
               <p class="font-bold">Number of Assessments:</p>
             </span>
             <p class="detailed_assess">${details.n_assess} assessments</p>
           </div>
           <div class="detailed-info">
             <span class="flex gap-[15px] items-center">
-              <img src="/img/cracks-detected.png" alt="" />
+              <img src="img/cracks-detected.png" alt="" />
               <p class="font-bold">Types of Cracks Detected:</p>
             </span>
             <span class="grid gap-2">
@@ -647,7 +647,7 @@ const displayGroupDetails = async (ID) => {
           </div>
           <div class="detailed-info">
             <span class="flex gap-[15px] items-center">
-              <img src="/img/total-crack.png" alt="" />
+              <img src="img/total-crack.png" alt="" />
               <p class="font-bold">Total Number of Cracks:</p>
             </span>
             <p class="detailed_assess">${
@@ -658,7 +658,7 @@ const displayGroupDetails = async (ID) => {
           </div>
           <div class="detailed-info">
             <span class="flex gap-[15px] items-center">
-              <img src="/img/date.png" alt="" />
+              <img src="img/date.png" alt="" />
               <p class="font-bold">Date Last Updated:</p>
             </span>
             <p class="detailed_assess">${details.date}</p>
