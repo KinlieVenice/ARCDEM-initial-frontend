@@ -859,7 +859,7 @@ const changePanel = async (ID, parentID) => {
         <span class=""></span>
         <span class=""></span>
       </div>
-      <div class="groupsPanel__back"><span onclick="${backFunc}" class="custom-back-button">&larr;</span></div>
+      <div class="groupsPanel__back custom-back-button"><span onclick="${backFunc}">&larr;</span></div>
       <div
         class="backdrop absolute w-full h-full top-0 left-0 z-40 sm:hidden"
       ></div>
@@ -891,6 +891,9 @@ const changePanel = async (ID, parentID) => {
     document.querySelector(".groupsPanel").classList.toggle("open");
     document.querySelector(".groupsPanel__wrapper").classList.toggle("open");
     document.querySelector(".groupsPanel__back").classList.toggle("open");
+    document
+      .querySelector(".groupsPanel__back")
+      .classList.toggle("custom-back-button");
     document.querySelector(".backdrop").classList.toggle("z-40");
   });
 
@@ -910,6 +913,7 @@ const changePanel = async (ID, parentID) => {
       panel.classList.remove("open");
       wrapper.classList.remove("open");
       back.classList.remove("open");
+      back.classList.remove("custom-back-button");
       backdrop.classList.add("z-40");
     }
   });
@@ -977,9 +981,9 @@ const closeMarkerDetails = async (ID = null) => {
 };
 
 const closeGroupDetails = async (ID, animate = false) => {
-   if (openedMarkId && markers[`assID-${openedMarkId}`]) {
-     markers[`assID-${openedMarkId}`].closePopup();
-   };
+  if (openedMarkId && markers[`assID-${openedMarkId}`]) {
+    markers[`assID-${openedMarkId}`].closePopup();
+  }
   openedMarkId = 0;
   let target = document.querySelector(".details");
   if (!target) return;
@@ -994,8 +998,6 @@ const closeGroupDetails = async (ID, animate = false) => {
       target.remove();
     }, 300);
   } else target.remove();
-
- 
 };
 
 map.on("click", () => {
