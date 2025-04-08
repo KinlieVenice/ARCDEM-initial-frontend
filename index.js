@@ -544,8 +544,12 @@ const displayGroupDetails = async (ID) => {
   const detailsElement = document.querySelector(".details");
   if (detailsElement) {
     detailsElement.remove();
-    markers[`assID-${openedMarkId}`].closePopup();
-  }
+     if (openedMarkId && markers[`assID-${openedMarkId}`]) {
+       markers[`assID-${openedMarkId}`].closePopup();
+     }
+
+  };
+
 
   const details = await fetchGroup(ID);
   console.log("details", details);
@@ -860,7 +864,7 @@ const changePanel = async (ID, parentID) => {
         <span class=""></span>
         <span class=""></span>
       </div>
-      <div class="groupsPanel__back"><span onclick="${backFunc}">&larr;</span></div>
+      <div class="groupsPanel__back"><span onclick="${backFunc}" class="pointer-events-none sm:pointer-events-auto">&larr;</span></div>
       <div
         class="backdrop absolute w-full h-full top-0 left-0 z-40 sm:hidden"
       ></div>
@@ -956,7 +960,6 @@ const changePanel = async (ID, parentID) => {
     });
   });
   sideGIS.classList.add("open");
-
   
 
 };
@@ -975,7 +978,10 @@ const closeMarkerDetails = async (ID = null) => {
     }, 300);
   };
   sideGIS.classList.remove("open");
-  markers[`assID-${ID}`].closePopup();
+  if (openedMarkId && markers[`assID-${openedMarkId}`]) {
+    markers[`assID-${openedMarkId}`].closePopup();
+  }
+
 };
 
 const closeGroupDetails = async (ID, animate = false) => {
