@@ -864,7 +864,7 @@ const changePanel = async (ID, parentID) => {
         <span class=""></span>
         <span class=""></span>
       </div>
-      <div class="groupsPanel__back"><span onclick="${backFunc}" class="pointer-events-none sm:pointer-events-auto">&larr;</span></div>
+      <div class="groupsPanel__back"><span onclick="${backFunc}" class="custom-back-button">&larr;</span></div>
       <div
         class="backdrop absolute w-full h-full top-0 left-0 z-40 sm:hidden"
       ></div>
