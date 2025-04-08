@@ -345,7 +345,9 @@ const displayMarkersDetails = async (ID, lat, lng) => {
   ancestors.forEach((ancestor, index) => {
     address.insertAdjacentHTML(
       "beforeend",
-      `<p class="inline capitalize">${index > 0 ? ", " : ""}${ancestor.name}</p>`
+      `<p class="inline capitalize">${index > 0 ? ", " : ""}${
+        ancestor.name
+      }</p>`
     );
   });
 
@@ -382,7 +384,6 @@ const displayMarkersDetails = async (ID, lat, lng) => {
       timeZone: "UTC",
     })
     .replace(",", "");
-
 
   crackDetails.innerHTML += `<p class="crack-info py-2"><span class="font-bold">Date Asssessed: </span>${formattedDate}</p>`;
   assessCracks.cracks.forEach((crack) => {
@@ -544,16 +545,13 @@ const displayGroupDetails = async (ID) => {
   const detailsElement = document.querySelector(".details");
   if (detailsElement) {
     detailsElement.remove();
-     if (openedMarkId && markers[`assID-${openedMarkId}`]) {
-       markers[`assID-${openedMarkId}`].closePopup();
-     }
-
-  };
-
+    if (openedMarkId && markers[`assID-${openedMarkId}`]) {
+      markers[`assID-${openedMarkId}`].closePopup();
+    }
+  }
 
   const details = await fetchGroup(ID);
   console.log("details", details);
-
 
   closeGroupDetails(openedId);
   main.insertAdjacentHTML(
@@ -645,7 +643,6 @@ const displayGroupDetails = async (ID) => {
   );
   sideGIS.classList.add("open");
 
-
   document.getElementById("details__toggle").addEventListener("click", () => {
     document.querySelector(".details").classList.toggle("close");
     document.querySelector(".details__toggle").classList.toggle("scale-x-[-1]");
@@ -673,7 +670,6 @@ const displayGroupDetails = async (ID) => {
   if (ID !== openedId) changePanel(ID, details.parent_id);
   console.log("parent_id", details.parent_id);
   openedId = ID;
-
 };
 
 const downloadSummary = async (ID) => {
@@ -838,7 +834,6 @@ const getImageBase64 = (url) => {
 const capitalizeFirstLetter = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
-
 const resetMarkerColors = () => {
   const marks = Object.values(markers); // Assuming 'markers' is an object of marker instances
   marks.forEach((mark) => {
@@ -960,14 +955,15 @@ const changePanel = async (ID, parentID) => {
     });
   });
   sideGIS.classList.add("open");
-  
-
 };
 
 const closeMarkerDetails = async (ID = null) => {
   document.querySelectorAll(".groupsList--content h6").forEach((assess) => {
     assess.classList.remove("selected");
   });
+  if (openedMarkId && markers[`assID-${openedMarkId}`]) {
+    markers[`assID-${openedMarkId}`].closePopup();
+  }
   openedMarkId = 0;
   if (openedId !== 0) displayGroupDetails(openedId);
   else {
@@ -976,15 +972,14 @@ const closeMarkerDetails = async (ID = null) => {
     setTimeout(() => {
       target.remove();
     }, 300);
-  };
-  sideGIS.classList.remove("open");
-  if (openedMarkId && markers[`assID-${openedMarkId}`]) {
-    markers[`assID-${openedMarkId}`].closePopup();
   }
-
+  sideGIS.classList.remove("open");
 };
 
 const closeGroupDetails = async (ID, animate = false) => {
+   if (openedMarkId && markers[`assID-${openedMarkId}`]) {
+     markers[`assID-${openedMarkId}`].closePopup();
+   };
   openedMarkId = 0;
   let target = document.querySelector(".details");
   if (!target) return;
@@ -1000,6 +995,7 @@ const closeGroupDetails = async (ID, animate = false) => {
     }, 300);
   } else target.remove();
 
+ 
 };
 
 map.on("click", () => {
@@ -1010,7 +1006,6 @@ map.on("click", () => {
 });
 
 init();
-
 
 /----------------------------------------/;
 const closeSubgrpDetails = async (ID, parentID, all = false) => {
@@ -1290,4 +1285,3 @@ async function generateAssessments(data) {
 // Add markers to the map
 
 // displayGroupLevel(selectedGroup);
-
