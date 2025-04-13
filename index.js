@@ -124,7 +124,6 @@ googleHybrid = L.tileLayer(
 let baseLayers = {
   OpenStreetMap: osm,
   "Satellite View": googleHybrid,
-  "Google Street": googleStreets,
 };
 
 // Add Layer Control Button
